@@ -5,15 +5,15 @@
  *   firstName: String,
  *   location: String
  * }[]} students - The list of students.
- * @returns
+ * @returns {Number[]} The list of student ids.
  */
 
 export default function getListStudentsIds(list) {
-  if (list instanceof Array) {
+  if (!(list instanceof Array)) {
     return [];
   }
 
-  const ids = list.map((list) => list.id);
+  const ids = list.map((student) => student.id);
 
   return ids;
 }
