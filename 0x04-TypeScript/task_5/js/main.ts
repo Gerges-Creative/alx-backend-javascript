@@ -1,69 +1,15 @@
-export interface DirectorInterface {
-  workFromHome(): string;
-  getCoffeeBreak(): string;
-  workDirectorTasks(): string;
-  }
-
-export interface TeacherInterface {
-  workFromHome(): string;
-  getCoffeeBreak(): string;
-  workTeacherTasks(): string;
-  }
-
-export class Director implements DirectorInterface {
-  workFromHome() {
-    return "Working from home";
-    }
-
-  getToWork() {
-    return "Getting a coffee break";
-    }
-
-  workDirectorTasks() {
-  return "Getting to director tasks";
-  }
+export interface MajorCredits {
+  credits: number & { __brand: 'MajorCredits.credits' };
 }
 
-export class Teacher implements TeacherInterface {
-  workFromHome() {
-   return "Cannot work from home";
-   }
-
-  getCoffeeBreak() {
-    return "Cannot have a break";
-    }
-
-  workTeacherTasks() {
-    return "Getting to work";
-    }
+export interface MinorCredits {
+  credits: number & { __brand: 'MinorCredits.credits' };
 }
 
-export function createEmployee(salary: (string | number)) : (Directory | Teacher) {
-  if (typeof salary === 'number' && salary < 500) {
-    return Teacher;
-  }
-
-  return Director;
+export function sumMajorCredits(subject1: MajorCredits, subject2: MajorCredits): MajorCredits {
+  return { credits: subject1.credits + subject2.credits } as MajorCredits;
 }
 
-export function isDirector(employee: any): employee is Director {
-  return employee instanceof Director;
-  }
-
-export function executeWork(employee: (Director | Teacher)) {
-  if (isDirector(employee)) {
-    return (employee as Director).workDirectorTasks();
-  }
-  return (employee as Teacher).workTeacherTasks();
-}
-
-export type Subjects = ('Math' | 'History');
-export function teachClass(todayClass: Subjects) : string {
-  if (todayClass === 'Math') {
-    return 'Teaching Math';
-  }
-
-  if (todayClass === 'History') {
-    return 'Teaching History';
-  }
+export function sumMinorCredits(subject1: MinorCredits, subject2: MinorCredits): MinorCredits {
+  return { credits: subject1.credits + subject2.credits } as MinorCredits;
 }
