@@ -10,7 +10,7 @@
 export default function cleanSet(set, startString) {
   let mulStr = '';
 
-  if (!startString) {
+  if (!startString || typeof startString !== 'string') {
     return '';
   }
 
