@@ -8,4 +8,21 @@
  */
 
 export default function cleanSet(set, startString) {
-    
+  let mulStr = '';
+
+  if (!startString) {
+    return '';
+  }
+
+  for (const x of set) {
+    if (x.startsWith(startString)) {
+      const str = x.slice(startString.length);
+      if (mulStr) {
+        mulStr += `- ${str}`;
+      } else {
+        mulStr = str;
+      }
+    }
+  }
+  return mulStr;
+}
