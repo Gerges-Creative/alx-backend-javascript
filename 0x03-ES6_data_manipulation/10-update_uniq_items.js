@@ -5,15 +5,15 @@
  * @author Bezaleel Olakunori <https://github.com/B3zaleel>
  */
 export default function updateUniqueItems(map) {
-  if !(map instanceof Map) {
+  if (!(map instanceof Map)) {
     return 'Cannot process';
   }
 
-  map.forEach (function(value, key) {
+  map.forEach((value, key) => {
     if (value === 1) {
       map.set(key, 100);
     }
-  })
+  });
 
   return map;
 }
