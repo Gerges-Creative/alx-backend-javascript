@@ -18,7 +18,7 @@ export default function cleanSet(set, startString) {
     if (x.startsWith(startString)) {
       const str = x.slice(startString.length);
       if (mulStr) {
-        mulStr += `- ${str}`;
+        mulStr += `-${str}`;
       } else {
         mulStr = str;
       }
