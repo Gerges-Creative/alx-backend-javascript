@@ -11,6 +11,10 @@ export const weakMap = new WeakMap();
  * }} endpoint - The endpoint to make a request to.
  */
 export function queryAPI(endpoint) {
+  if (!weakMap.has(endpoint)) {
+    weakMap.set(endpoint, 0);
+  }
+
   if (weakMap.has(endpoint)) {
     const count = weakMap.get(endpoint);
     weakMap.set(endpoint, count + 1);
